@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Do You Love Me?</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffdee9, #b5fffc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 30px;
+      color: #e91e63;
+    }
+
+    button {
+      font-size: 1em;
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .no {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #message {
+      font-size: 1.2em;
+      color: #333;
+      margin-top: 30px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="question">Do you love me?</h1>
+    <div>
+      <button class="yes" onclick="handleYes()">Yes</button>
+      <button class="no" id="noBtn" onclick="handleNo()">No</button>
+    </div>
+    <p id="message" class="hidden">[This is the final love message. Replace this line with your own message ❤️]</p>
+  </div>
+
+  <script>
+    let step = 0;
+
+    const questions = [
+      "Please think again... 😔",
+      "Ek baar aur soch lo 🥺",
+      "Motiiii please maan jaa na I love you ❤️"
+    ];
+
+    function handleYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.querySelector(".yes").classList.add("hidden");
+      document.getElementById("noBtn").classList.add("hidden");
+      document.getElementById("message").classList.remove("hidden");
+      document.getElementById("message").innerText = "Ik No pe click nhi ho rha isliye yes click karna pada hai. I am really sorry merii motiiii i really am i dont want to hurt you or make you cry ever i just want to see you happy that's want i want i never intentionally can hurt you but somewhere it is my mistake only because of my behaviour and carelessnes it is happening like this yesterday i became jealous that day too but i didnt understand that if this is happening it is my mistake that you are turning to someone else because lack of trust on me.... I am really sorry merii motiii what i meant yesterday was i dont want anyone between us i wont let anyone come between us and i understood everything this was not your concern i know your concern is my behaviour my laziness my lack of seriousness and i promise i wil make everything work i want to see you happy and i will make everything beautiful mujhe coding aate hue bhi i never did this but i will take every effort to make you happy and after some time many will come to you and say you found a gem and it will happen i really love you meriii motiiii.... yaar isme emoji hi nhi hai saara... but that does't matters wwhat matters are your feelings and mine and we wil together be happy always and i will show you my efforts in every way whether it is possible or not but i will make you feel special in all ways merii motiiii... I really love you and i don't want to loose you ever i want to be in all your phases and i promise it will happpen it surely wil... I LOVE YOU SO SO SO MUCHH MERIII MOTIIIII.... I LOVE YOU INFINITYY AUR USSE BHI ZYADA MERII MOTIIII.... ❤️";
+    }
+
+    function handleNo() {
+      if (step < questions.length - 1) {
+        document.getElementById("question").innerText = questions[step];
+        step++;
+      } else {
+        // Last step: make the No button move randomly
+        const noBtn = document.getElementById("noBtn");
+        noBtn.onmouseover = () => {
+          const x = Math.floor(Math.random() * 300);
+          const y = Math.floor(Math.random() * 300);
+          noBtn.style.position = "absolute";
+          noBtn.style.left = x + "px";
+          noBtn.style.top = y + "px";
+        };
+        document.getElementById("question").innerText = questions[step];
+      }
+    }
+  </script>
+</body>
+</html>
